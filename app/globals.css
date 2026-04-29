@@ -1,26 +1,110 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius: 10px;
+  --ready-high: oklch(0.72 0.15 135);
+  --ready-mod:  oklch(0.78 0.14 85);
+  --ready-low:  oklch(0.64 0.19 27);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Light */
+:root {
+  --bg:         #ffffff;
+  --bg-subtle:  #f7f7f8;
+  --bg-elev:    #ffffff;
+  --fg:         oklch(0.145 0 0);
+  --fg-muted:   #66667a;
+  --fg-dim:     #9093a0;
+  --border:     rgba(0,0,0,0.08);
+  --border-str: rgba(0,0,0,0.14);
+  --input-bg:   #f3f3f5;
+  --primary:    #030213;
+  --primary-fg: #ffffff;
+  --accent-bg:  #e9ebef;
+  --chip-bg:    #ececf0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg:         oklch(0.145 0 0);
+    --bg-subtle:  oklch(0.18 0 0);
+    --bg-elev:    oklch(0.205 0 0);
+    --fg:         oklch(0.985 0 0);
+    --fg-muted:   oklch(0.72 0 0);
+    --fg-dim:     oklch(0.52 0 0);
+    --border:     rgba(255,255,255,0.09);
+    --border-str: rgba(255,255,255,0.16);
+    --input-bg:   oklch(0.24 0 0);
+    --primary:    #ffffff;
+    --primary-fg: oklch(0.205 0 0);
+    --accent-bg:  oklch(0.24 0 0);
+    --chip-bg:    oklch(0.24 0 0);
   }
 }
 
+*, *::before, *::after { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
 }
+
+.af-mono { font-family: var(--font-mono); font-feature-settings: "tnum", "zero"; }
+
+.af-eyebrow {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--fg-muted); font-weight: 500; font-family: var(--font-mono);
+}
+.af-label {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fg-muted); font-weight: 500; font-family: var(--font-mono);
+}
+
+.af-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 8px; border-radius: 9999px;
+  font-size: 11px; font-weight: 500; line-height: 1;
+  background: var(--chip-bg); color: var(--fg);
+  font-family: var(--font-mono);
+}
+.af-chip-outline { background: transparent; border: 1px solid var(--border-str); }
+
+.af-dot {
+  width: 8px; height: 8px; border-radius: 9999px; display: inline-block; flex-shrink: 0;
+}
+.af-dot-high {
+  background: var(--ready-high);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ready-high), transparent 82%);
+}
+
+.af-input {
+  width: 100%; background: var(--input-bg); border: 1px solid transparent;
+  border-radius: var(--radius); padding: 12px 14px; font-size: 14px;
+  color: var(--fg); font-family: var(--font-sans); outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+.af-input:focus { border-color: var(--border-str); background: var(--bg-elev); }
+.af-input::placeholder { color: var(--fg-dim); }
+
+.af-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; font-family: var(--font-sans); font-weight: 500;
+  border: 1px solid transparent; border-radius: 9999px;
+  cursor: pointer; transition: transform 0.08s, background 0.15s, filter 0.15s;
+  user-select: none; white-space: nowrap; text-decoration: none;
+}
+.af-btn:active { transform: scale(0.985); }
+.af-btn-primary { background: var(--primary); color: var(--primary-fg); }
+.af-btn-primary:hover { filter: brightness(1.08); }
+.af-btn-ghost { background: transparent; color: var(--fg-muted); border: none; }
+.af-btn-ghost:hover { color: var(--fg); }
