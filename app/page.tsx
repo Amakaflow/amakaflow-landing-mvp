@@ -301,6 +301,32 @@ export default function Page() {
             </div>
           </section>
 
+          {/* Screenshots showcase */}
+          <section className="af-section-pad" style={{ borderBottom: "1px solid var(--border)" }}>
+            <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+              <div className="af-screenshots-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32, justifyItems: "center" }}>
+                {[
+                  { src: "/af-screen-home.png", label: "THE APP — readiness + today's session" },
+                  { src: "/af-screen-workout-player.png", label: "YOUR WATCH — live interval guidance" },
+                  { src: "/af-screen-home-replan.png", label: "ONE ADAPTIVE COACH — plan adjusts automatically" },
+                ].map(({ src, label }) => (
+                  <div key={src} style={{ textAlign: "center", width: "100%" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt={label} style={{
+                      width: "100%", maxWidth: 220, borderRadius: 32,
+                      boxShadow: "0 16px 48px rgba(0,0,0,0.14)",
+                      border: "1px solid var(--border)",
+                    }} />
+                    <div className="af-mono" style={{ fontSize: 10, color: "var(--fg-muted)", marginTop: 14, lineHeight: 1.5 }}>
+                      {label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <style>{`@media(max-width:768px){.af-screenshots-grid{grid-template-columns:1fr!important}}`}</style>
+            </div>
+          </section>
+
           {/* Pricing */}
           <section id="pricing" className="af-section-pad" style={{ borderBottom: "1px solid var(--border)" }}>
             <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -349,68 +375,30 @@ export default function Page() {
 
 function MobilePreview() {
   return (
-    <div style={{
-      padding: 20, background: "var(--bg-subtle)",
-      borderRadius: 14, border: "1px solid var(--border)",
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-        <Ring value={84} size={56} stroke={5} />
-        <div>
-          <div className="af-label">READINESS · TODAY</div>
-          <div style={{ fontSize: 16, fontWeight: 600, marginTop: 4 }}>Ready</div>
-        </div>
-      </div>
-      <div style={{
-        padding: "12px 14px", background: "var(--bg-elev)",
-        border: "1px solid var(--border)", borderRadius: 8,
-      }}>
-        <div className="af-label" style={{ fontSize: 9 }}>THRESHOLD RUN</div>
-        <div style={{ fontSize: 14, fontWeight: 500, marginTop: 3 }}>4×8 min @ threshold</div>
-        <div className="af-mono" style={{ fontSize: 11, color: "var(--fg-muted)", marginTop: 4 }}>64m · Z3–4 · TSS 78</div>
-      </div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/af-screen-home.png"
+        alt="AmakaFlow home screen"
+        style={{ width: 200, borderRadius: 28, boxShadow: "0 12px 40px rgba(0,0,0,0.15)", border: "1px solid var(--border)" }}
+      />
     </div>
   );
 }
 
 function DesktopPreview() {
   return (
-    <div style={{
-      background: "var(--bg-subtle)", padding: 36, borderRadius: 20,
-      border: "1px solid var(--border)",
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
-        <Ring value={84} size={72} stroke={6} />
-        <div>
-          <div className="af-label">READINESS · THU · 6:14 AM</div>
-          <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.005em", marginTop: 4 }}>Ready</div>
-          <div style={{ fontSize: 12, color: "var(--fg-muted)", marginTop: 3 }}>HRV +8 · Sleep 7h 42m</div>
-        </div>
-      </div>
-      <div style={{
-        padding: "16px 18px", background: "var(--bg-elev)",
-        border: "1px solid var(--border)", borderRadius: 10, marginBottom: 10,
-      }}>
-        <div className="af-label" style={{ fontSize: 10 }}>TODAY · THRESHOLD RUN</div>
-        <div style={{ fontSize: 18, fontWeight: 500, marginTop: 5, letterSpacing: "-0.005em" }}>
-          4×8 min @ threshold
-        </div>
-        <div className="af-mono" style={{ fontSize: 12, color: "var(--fg-muted)", marginTop: 5 }}>
-          64m · Z3–4 · TSS 78 · IF 0.87
-        </div>
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 6, marginTop: 14 }}>
-        {WEEK_DAYS.map((done, i) => (
-          <div key={i} style={{
-            aspectRatio: "1", borderRadius: 6,
-            background: done ? "var(--accent-bg)" : "transparent",
-            border: done ? "none" : "1px dashed var(--border-str)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            color: "var(--fg-muted)",
-          }}>
-            {done && <CheckIcon size={12} />}
-          </div>
-        ))}
-      </div>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/af-screen-home.png"
+        alt="AmakaFlow home screen showing readiness score and today's workout"
+        style={{
+          width: 280, borderRadius: 36,
+          boxShadow: "0 24px 64px rgba(0,0,0,0.18)",
+          border: "1px solid var(--border)",
+        }}
+      />
     </div>
   );
 }
