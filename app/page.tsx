@@ -167,6 +167,7 @@ export default function Page() {
           .af-pricing-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 600px; }
           .af-section-pad { padding: 40px 56px; }
           .af-footer { padding: 24px 56px; }
+          .af-sticky-cta { display: none; }
           @media (max-width: 768px) {
             .af-nav-links { display: none; }
             .af-nav-join { padding: 7px 14px !important; font-size: 12px !important; }
@@ -177,6 +178,7 @@ export default function Page() {
             .af-pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
             .af-section-pad { padding: 28px 24px; }
             .af-footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
+            .af-sticky-cta { display: flex; position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 24px 20px; background: var(--bg); border-top: 1px solid var(--border); z-index: 100; }
           }
         `}</style>
 
@@ -222,10 +224,10 @@ export default function Page() {
                 Train on the<br />right day.
               </h1>
               <p style={{
-                fontSize: 15, lineHeight: 1.55, marginTop: 14,
+                fontSize: 16, lineHeight: 1.65, marginTop: 14,
                 color: "var(--fg-muted)", maxWidth: 520,
               }}>
-                An AI coach for hybrid athletes. Every morning, your plan adapts to HRV, sleep, and yesterday&apos;s training load — so you push when you&apos;re ready and recover when you&apos;re not.
+                An AI coach for hybrid athletes. Every morning, your plan adapts to HRV, sleep, and yesterday&apos;s training load — so you push when you&apos;re ready, recover when you&apos;re not, and keep progressing toward your next HYROX or half-marathon.
               </p>
 
               {/* Mobile preview (between text and form on mobile) */}
@@ -245,7 +247,10 @@ export default function Page() {
                   @media(max-width:768px){.product-row{grid-template-columns:1fr!important;gap:8px!important}}
                 `}</style>
               </div>
-              <p className="af-mono" style={{ fontSize: 10, marginTop: 10, color: "var(--fg-muted)" }}>
+              <p className="af-mono" style={{ fontSize: 10, marginTop: 8, color: "var(--fg-muted)" }}>
+                NO SPAM · 1–2 LAUNCH EMAILS ONLY
+              </p>
+              <p className="af-mono" style={{ fontSize: 10, marginTop: 6, color: "var(--fg-muted)" }}>
                 1,482 ATHLETES ON WAITLIST · NEXT COHORT MAY 15
               </p>
             </div>
@@ -294,7 +299,7 @@ export default function Page() {
                     alignItems: "start",
                   }}>
                     <div className="af-label" style={{ paddingTop: 2 }}>{title}</div>
-                    <div style={{ fontSize: 14, color: "var(--fg-muted)", lineHeight: 1.65 }}>{body}</div>
+                    <div style={{ fontSize: 15, color: "var(--fg-muted)", lineHeight: 1.75 }}>{body}</div>
                   </div>
                 ))}
               </div>
@@ -306,9 +311,9 @@ export default function Page() {
             <div style={{ maxWidth: 1280, margin: "0 auto" }}>
               <div className="af-screenshots-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32, justifyItems: "center" }}>
                 {[
-                  { src: "/af-screen-home.png", label: "THE APP — readiness + today's session" },
-                  { src: "/af-screen-workout-player.png", label: "YOUR WATCH — live interval guidance" },
-                  { src: "/af-screen-home-replan.png", label: "ONE ADAPTIVE COACH — plan adjusts automatically" },
+                  { src: "/af-screen-home.png", label: "Daily readiness score and today's session, built from HRV, sleep, and training load." },
+                  { src: "/af-screen-workout-player.png", label: "Live interval guidance on your watch. No phone needed mid-run." },
+                  { src: "/af-screen-home-replan.png", label: "Plan auto-adjusts after every session — not just weekly." },
                 ].map(({ src, label }) => (
                   <div key={src} style={{ textAlign: "center", width: "100%" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -327,18 +332,41 @@ export default function Page() {
             </div>
           </section>
 
+          {/* Who it's for */}
+          <section className="af-section-pad" style={{ borderBottom: "1px solid var(--border)" }}>
+            <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+              <div className="af-label" style={{ marginBottom: 20 }}>WHO IT&apos;S FOR</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }} className="af-for-grid">
+                {[
+                  ["HYROX & HYBRID ATHLETES", "Training for an event that mixes running and strength. You need a plan that respects both — not two separate apps pulling in opposite directions."],
+                  ["RUNNERS WITH A GARMIN OR APPLE WATCH", "You already collect HRV, sleep, and pace data. AmakaFlow puts it to work — your watch data shapes your plan every morning, automatically."],
+                  ["LIFTERS WHO ALSO RUN", "You want the strength gains and the cardio base, but managing fatigue across both is guesswork. AmakaFlow balances the load so nothing falls apart."],
+                ].map(([title, body]) => (
+                  <div key={title} style={{ borderTop: "1px solid var(--border)", paddingTop: 16 }}>
+                    <div className="af-label" style={{ marginBottom: 10 }}>{title}</div>
+                    <div style={{ fontSize: 14, color: "var(--fg-muted)", lineHeight: 1.7 }}>{body}</div>
+                  </div>
+                ))}
+              </div>
+              <style>{`@media(max-width:768px){.af-for-grid{grid-template-columns:1fr!important}}`}</style>
+            </div>
+          </section>
+
           {/* Pricing */}
           <section id="pricing" className="af-section-pad" style={{ borderBottom: "1px solid var(--border)" }}>
             <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-              <div className="af-label" style={{ marginBottom: 16 }}>PRICING</div>
+              <div className="af-label" style={{ marginBottom: 4 }}>PRICING</div>
+              <p style={{ fontSize: 13, color: "var(--fg-muted)", marginBottom: 20, lineHeight: 1.5 }}>
+                Replaces a running coach ($100+/mo), strength programming ($20+/mo), and spreadsheet chaos — for less than a coffee a week.
+              </p>
               <div className="af-pricing-grid">
                 {[
-                  { label: "Annual", price: "$89.99", sub: "$7.50/mo", badge: "SAVE 42%" },
-                  { label: "Monthly", price: "$12.99", sub: "7-day trial", badge: null },
-                ].map(({ label, price, sub, badge }) => (
+                  { label: "Annual", price: "$89.99", sub: "$7.50/mo", badge: "SAVE 42%", note: "Best value", primary: true },
+                  { label: "Monthly", price: "$12.99", sub: "7-day free trial", badge: null, note: "Cancel before trial ends, pay nothing", primary: false },
+                ].map(({ label, price, sub, badge, note, primary }) => (
                   <div key={label} style={{
                     padding: 20, borderRadius: 12,
-                    border: "1px solid var(--border-str)",
+                    border: primary ? "2px solid var(--fg)" : "1px solid var(--border-str)",
                     background: "var(--bg-elev)",
                   }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
@@ -353,11 +381,19 @@ export default function Page() {
                     </div>
                     <div className="af-mono" style={{ fontSize: 22, fontWeight: 600 }}>{price}</div>
                     <div style={{ fontSize: 11, color: "var(--fg-muted)", fontFamily: "var(--font-mono)", marginTop: 3 }}>{sub}</div>
+                    <div style={{ fontSize: 11, color: "var(--fg-muted)", marginTop: 8, lineHeight: 1.5 }}>{note}</div>
                   </div>
                 ))}
               </div>
             </div>
           </section>
+
+          {/* Sticky mobile CTA */}
+          <div className="af-sticky-cta">
+            <a href="#waitlist" className="af-btn af-btn-primary" style={{ flex: 1, textAlign: "center", padding: "14px", fontSize: 15, fontWeight: 600 }}>
+              Join waitlist — next cohort May 15
+            </a>
+          </div>
 
           {/* Footer */}
           <footer className="af-footer" style={{
