@@ -115,7 +115,7 @@ function WaitlistForm({ layout }: { layout: "mobile" | "desktop" }) {
           />
           <button type="submit" disabled={status === "loading"} className="af-btn af-btn-primary"
             style={{ padding: "10px 16px", fontSize: 13, flexShrink: 0 }}>
-            {status === "loading" ? "…" : <><span>Join</span><ChevronRight size={12} /></>}
+            {status === "loading" ? "…" : <><span>Get access</span><ChevronRight size={12} /></>}
           </button>
         </div>
         {errorMsg && <p style={{ marginTop: 8, fontSize: 12, color: "oklch(0.64 0.19 27)" }}>{errorMsg}</p>}
@@ -137,7 +137,7 @@ function WaitlistForm({ layout }: { layout: "mobile" | "desktop" }) {
         />
         <button type="submit" disabled={status === "loading"} className="af-btn af-btn-primary"
           style={{ padding: "14px 22px", fontSize: 15, flexShrink: 0 }}>
-          {status === "loading" ? "Joining…" : <><span>Join waitlist</span><ChevronRight size={14} /></>}
+          {status === "loading" ? "Joining…" : <><span>Get early access</span><ChevronRight size={14} /></>}
         </button>
       </div>
       {errorMsg && <p style={{ marginTop: 8, fontSize: 13, color: "oklch(0.64 0.19 27)" }}>{errorMsg}</p>}
@@ -146,9 +146,9 @@ function WaitlistForm({ layout }: { layout: "mobile" | "desktop" }) {
 }
 
 const HOW_IT_WORKS = [
-  ["01", "Wear your watch", "Sync Garmin or Apple Watch. We read HRV, resting HR, sleep, and training load every morning."],
-  ["02", "Answer 5 questions", "Goal, hours per week, modalities, experience, injuries. Under two minutes."],
-  ["03", "Train on the right day", "At 6am, your plan reshapes. Push when fresh, swap when tired, always progress safely."],
+  ["01", "Sync your data", "Connect Garmin or Apple Watch. We read HRV, sleep, and training load every morning — automatically."],
+  ["02", "Get a daily plan", "Running and strength, adapted to your readiness. Not a static week — a live plan that reflects today."],
+  ["03", "Train or adjust instantly", "Push when fresh. Swap or scale when fatigued. No static plans. No guessing."],
 ] as const;
 
 const WEEK_DAYS = [true, true, true, false, false, false, false];
@@ -221,7 +221,8 @@ export default function Page() {
                 fontWeight: 600, letterSpacing: "-0.025em",
                 lineHeight: 1.02, margin: 0, color: "var(--fg)",
               }}>
-                Train on the<br />right day.
+                Train on the<br />right day.<br />
+                <span style={{ color: "var(--fg-muted)" }}>Not just harder.</span>
               </h1>
               <p style={{
                 fontSize: 16, lineHeight: 1.65, marginTop: 14,
@@ -248,9 +249,9 @@ export default function Page() {
                 `}</style>
               </div>
               <p className="af-mono" style={{ fontSize: 10, marginTop: 8, color: "var(--fg-muted)" }}>
-                NO SPAM · 1–2 LAUNCH EMAILS ONLY
+                FREE DURING BETA · EARLY MEMBERS GET LAUNCH PRICING · NO SPAM
               </p>
-              <p className="af-mono" style={{ fontSize: 10, marginTop: 6, color: "var(--fg-muted)" }}>
+              <p className="af-mono" style={{ fontSize: 11, marginTop: 8, color: "var(--fg)", fontWeight: 600 }}>
                 1,482 ATHLETES ON WAITLIST · NEXT COHORT MAY 15
               </p>
             </div>
@@ -303,6 +304,41 @@ export default function Page() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          {/* The problem / differentiation */}
+          <section className="af-section-pad" style={{ borderBottom: "1px solid var(--border)", background: "var(--bg-subtle)" }}>
+            <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }} className="af-diff-grid">
+                <div>
+                  <div className="af-label" style={{ marginBottom: 16, color: "var(--fg-muted)" }}>THE PROBLEM</div>
+                  {[
+                    "Running plans ignore your strength fatigue",
+                    "Strength apps don't know you ran 18km yesterday",
+                    "You end up overtrained, undertrained, or injured",
+                  ].map(line => (
+                    <div key={line} style={{ display: "flex", gap: 12, marginBottom: 12, alignItems: "flex-start" }}>
+                      <span style={{ color: "oklch(0.64 0.19 27)", flexShrink: 0, paddingTop: 2 }}>✕</span>
+                      <span style={{ fontSize: 15, color: "var(--fg-muted)", lineHeight: 1.6 }}>{line}</span>
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="af-label" style={{ marginBottom: 16, color: "oklch(0.72 0.15 135)" }}>AMAKAFLOW</div>
+                  {[
+                    "One plan across running and strength",
+                    "Adjusted daily from real recovery data",
+                    "Built for athletes who do both",
+                  ].map(line => (
+                    <div key={line} style={{ display: "flex", gap: 12, marginBottom: 12, alignItems: "flex-start" }}>
+                      <span style={{ color: "oklch(0.72 0.15 135)", flexShrink: 0, paddingTop: 2 }}>✓</span>
+                      <span style={{ fontSize: 15, lineHeight: 1.6 }}>{line}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <style>{`@media(max-width:768px){.af-diff-grid{grid-template-columns:1fr!important;gap:32px!important}}`}</style>
             </div>
           </section>
 
@@ -391,7 +427,7 @@ export default function Page() {
           {/* Sticky mobile CTA */}
           <div className="af-sticky-cta">
             <a href="#waitlist" className="af-btn af-btn-primary" style={{ flex: 1, textAlign: "center", padding: "14px", fontSize: 15, fontWeight: 600 }}>
-              Join waitlist — next cohort May 15
+              Get early access — next cohort May 15
             </a>
           </div>
 
