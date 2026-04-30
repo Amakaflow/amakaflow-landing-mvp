@@ -214,6 +214,7 @@ export default function Page() {
                 <span className="af-dot af-dot-high" />
                 <span>NOW IN BETA · 1,482 ATHLETES</span>
               </div>
+              <div className="af-label" style={{ marginBottom: 12 }}>ADAPTIVE COACHING FOR HYBRID ATHLETES</div>
               <h1 className="af-hero-title" style={{
                 fontWeight: 600, letterSpacing: "-0.025em",
                 lineHeight: 1.02, margin: 0, color: "var(--fg)",
@@ -241,6 +242,7 @@ export default function Page() {
                   .mobile-form{display:none}
                   .desktop-form{display:block}
                   @media(max-width:768px){.mobile-form{display:block}.desktop-form{display:none}}
+                  @media(max-width:768px){.product-row{grid-template-columns:1fr!important;gap:8px!important}}
                 `}</style>
               </div>
               <p className="af-mono" style={{ fontSize: 10, marginTop: 10, color: "var(--fg-muted)" }}>
@@ -266,6 +268,33 @@ export default function Page() {
                     <div className="af-mono" style={{ fontSize: 13, color: "var(--fg-muted)", marginBottom: 8 }}>{n}</div>
                     <div style={{ fontSize: 16, fontWeight: 500, letterSpacing: "-0.005em" }}>{t}</div>
                     <div style={{ fontSize: 13, color: "var(--fg-muted)", marginTop: 6, lineHeight: 1.6 }}>{d}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Product sections */}
+          <section className="af-section-pad" style={{ borderBottom: "1px solid var(--border)" }}>
+            <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+              <div className="af-label" style={{ marginBottom: 20 }}>WHAT IT DOES</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 0 }}>
+                {[
+                  ["TELEGRAM — YOUR COACH, EVERY MORNING", "A daily briefing lands in Telegram with today's session and the reason behind it. Reply to swap a workout, scale it back, or adjust around fatigue. Sunday you get a summary of what changed and why."],
+                  ["THE APP — SETUP AND REVIEW", "Answer a few questions about your goal, training time, and what you do. AmakaFlow builds your plan, shows the reasoning behind it, and keeps a record of every adaptation over time. You don't open the app to train — it's for setup and review."],
+                  ["YOUR WATCH — WHERE TRAINING HAPPENS", "Open the day's session and send the workout to your Garmin. Intervals, sets, and reps are structured on the device. Completed training data feeds back into what comes next."],
+                  ["ONE ADAPTIVE COACH", "Most tools handle one part of training well: running plans, strength logs, or spreadsheets. AmakaFlow connects those pieces into one coach that adapts tomorrow based on what happened today. For hybrid athletes training for a HYROX, a half-marathon, or a general fitness PR."],
+                ].map(([title, body]) => (
+                  <div key={title} className="product-row" style={{
+                    padding: "24px 0",
+                    borderTop: "1px solid var(--border)",
+                    display: "grid",
+                    gridTemplateColumns: "280px 1fr",
+                    gap: 32,
+                    alignItems: "start",
+                  }}>
+                    <div className="af-label" style={{ paddingTop: 2 }}>{title}</div>
+                    <div style={{ fontSize: 14, color: "var(--fg-muted)", lineHeight: 1.65 }}>{body}</div>
                   </div>
                 ))}
               </div>
