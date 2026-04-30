@@ -214,7 +214,7 @@ export default function Page() {
             <div>
               <div className="af-chip af-chip-outline" style={{ marginBottom: 16 }}>
                 <span className="af-dot af-dot-high" />
-                <span>NOW IN BETA · 1,482 ATHLETES</span>
+                <span>USED BY 1,400+ HYBRID ATHLETES TRAINING FOR HYROX &amp; HALF MARATHONS</span>
               </div>
               <div className="af-label" style={{ marginBottom: 12 }}>ADAPTIVE COACHING FOR HYBRID ATHLETES</div>
               <h1 className="af-hero-title" style={{
@@ -248,11 +248,11 @@ export default function Page() {
                   @media(max-width:768px){.product-row{grid-template-columns:1fr!important;gap:8px!important}}
                 `}</style>
               </div>
-              <p className="af-mono" style={{ fontSize: 10, marginTop: 8, color: "var(--fg-muted)" }}>
-                FREE DURING BETA · EARLY MEMBERS GET LAUNCH PRICING · NO SPAM
+              <p style={{ fontSize: 12, marginTop: 8, color: "var(--fg-muted)" }}>
+                Early access. No noise.
               </p>
               <p className="af-mono" style={{ fontSize: 11, marginTop: 8, color: "var(--fg)", fontWeight: 600 }}>
-                1,482 ATHLETES ON WAITLIST · NEXT COHORT MAY 15
+                1,482 HYBRID ATHLETES ON WAITLIST · NEXT COHORT MAY 15
               </p>
             </div>
 
@@ -286,13 +286,13 @@ export default function Page() {
               <div className="af-label" style={{ marginBottom: 20 }}>WHAT IT DOES</div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 0 }}>
                 {[
-                  ["TELEGRAM — YOUR COACH, EVERY MORNING", "A daily briefing lands in Telegram with today's session and the reason behind it. Reply to swap a workout, scale it back, or adjust around fatigue. Sunday you get a summary of what changed and why."],
-                  ["THE APP — SETUP AND REVIEW", "Answer a few questions about your goal, training time, and what you do. AmakaFlow builds your plan, shows the reasoning behind it, and keeps a record of every adaptation over time. You don't open the app to train — it's for setup and review."],
-                  ["YOUR WATCH — WHERE TRAINING HAPPENS", "Open the day's session and send the workout to your Garmin. Intervals, sets, and reps are structured on the device. Completed training data feeds back into what comes next."],
-                  ["ONE ADAPTIVE COACH", "Most tools handle one part of training well: running plans, strength logs, or spreadsheets. AmakaFlow connects those pieces into one coach that adapts tomorrow based on what happened today. For hybrid athletes training for a HYROX, a half-marathon, or a general fitness PR."],
+                  ["TELEGRAM — YOUR COACH, EVERY MORNING", <>A <strong>daily briefing</strong> lands in Telegram with today&apos;s session and the reason behind it. Reply to swap a workout, scale it back, or adjust around fatigue. Sunday you get a summary of what changed and why.</>],
+                  ["THE APP — SETUP AND REVIEW", <>Answer a few questions about your goal, training time, and what you do. AmakaFlow builds your plan and keeps a record of every adaptation. <strong>Train from your watch — the app is just for setup and review.</strong></>],
+                  ["YOUR WATCH — WHERE TRAINING HAPPENS", <>Open the day&apos;s session and send the <strong>structured workout to your Garmin</strong>. Intervals, sets, and reps on the device. Completed training data feeds back into what comes next.</>],
+                  ["ONE ADAPTIVE COACH", <>Most tools handle one part of training well: running plans, strength logs, or spreadsheets. AmakaFlow connects those pieces into <strong>one coach that adapts tomorrow based on what happened today</strong> — for athletes training for HYROX, a half-marathon, or a general fitness PR.</>],
                 ].map(([title, body]) => (
-                  <div key={title} className="product-row" style={{
-                    padding: "24px 0",
+                  <div key={title as string} className="product-row" style={{
+                    padding: "32px 0",
                     borderTop: "1px solid var(--border)",
                     display: "grid",
                     gridTemplateColumns: "280px 1fr",
